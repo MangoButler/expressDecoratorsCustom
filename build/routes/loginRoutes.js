@@ -32,34 +32,6 @@ router.get('/', (req, res) => {
   <h1>Home</div>
   </div>`);
 });
-router.get('/login', (req, res) => {
-    res.send(`
-  <form method="post">
-  <div>
-    <label>Email</label>
-    <input name="email" />
-  </div>
-  <div>
-    <label>Password</label>
-    <input name="password" type="password" />
-  </div>
-  <button type="submit">Submit</button>
-  </form>
-  `);
-});
-router.post('/login', (req, res) => {
-    const { email, password } = req.body;
-    if (email &&
-        password &&
-        email === 'mail@mail.com' &&
-        password === 'password') {
-        req.session = { loggedIn: true };
-        res.redirect('/');
-    }
-    else {
-        res.send('invalid email or password');
-    }
-});
 router.get('/logout', (req, res) => {
     req.session = undefined;
     res.redirect('/');
